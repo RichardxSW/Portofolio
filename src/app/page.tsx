@@ -6,11 +6,18 @@ import Link from "next/link"
 import skillsData from "./data/skillsData.js"
 import projectsData from "./data/projectsData.js"
 
+// Tipe props untuk komponen HamburgerMenu
+interface HamburgerMenuProps {
+  isOpen: boolean;
+  toggleMenu: () => void;
+  activeSection: string;
+}
+
 // HamburgerMenu Component
-function HamburgerMenu({ isOpen, toggleMenu, activeSection }) {
+function HamburgerMenu({ isOpen, toggleMenu, activeSection }:HamburgerMenuProps) {
   return (
     <div
-      className={`fixed top-0 right-0 h-full w-1/3 bg-black bg-opacity-90 text-white z-20 transition-transform duration-300 ${
+      className={`fixed top-0 right-0 h-full w-1/3 bg-black bg-opacity-90 text-white z-50 transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -74,7 +81,7 @@ export default function ColorfulPortfolio() {
             </div>
             
             {/* Menu Links */}
-            <div className="hidden lg:flex">
+            <div className="hidden md:flex">
               {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                 <Link 
                   key={item} 
@@ -88,6 +95,7 @@ export default function ColorfulPortfolio() {
 
             {/* Hamburger button for mobile */}
           <div className="lg:hidden">
+          {!isMenuOpen && (
             <button onClick={toggleMenu} className="text-white">
               <svg
                 className="w-6 h-6"
@@ -104,6 +112,7 @@ export default function ColorfulPortfolio() {
                 />
               </svg>
             </button>
+          )}
 
           </div>
         </nav>
