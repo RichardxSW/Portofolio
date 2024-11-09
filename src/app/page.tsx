@@ -8,6 +8,8 @@ import projectsData from "./data/projectsData.js"
 
 export default function ColorfulPortfolio() {
   const [activeSection, setActiveSection] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false);  // State for hamburger menu
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,16 @@ export default function ColorfulPortfolio() {
             <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
               Portofolio
             </div>
-            <div className="space-x-4">
+            <div className="lg:hidden flex items-center">
+              {/* Hamburger Button */}
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+            {/* Menu Links */}
+            <div className={`lg:flex space-x-4 ${isMenuOpen ? 'block' : 'hidden'} lg:block`}>
               {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                 <Link 
                   key={item} 
@@ -71,7 +82,7 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
-        <section id="about" className="min-h-screen flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-md">
+        <section id="about" className="min-h-screen flex justify-center items-center py-20 bg-black bg-opacity-50 backdrop-blur-md">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Tentang Saya</h2>
             <div className="flex flex-col md:flex-row items-center justify-center">
@@ -91,7 +102,7 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
-        <section id="skills" className="min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-800 to-indigo-800">
+        <section id="skills" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-purple-800 to-indigo-800">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Keterampilan Saya</h2>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
