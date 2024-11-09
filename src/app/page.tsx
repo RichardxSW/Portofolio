@@ -6,6 +6,38 @@ import Link from "next/link"
 import skillsData from "./data/skillsData.js"
 import projectsData from "./data/projectsData.js"
 
+// HamburgerMenu Component
+function HamburgerMenu({ isOpen, toggleMenu, activeSection }) {
+  return (
+    <div
+      className={`fixed top-0 right-0 h-full w-1/3 bg-black bg-opacity-90 text-white z-20 transition-transform duration-300 ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      }`}
+    >
+      <button
+        onClick={toggleMenu}
+        className="text-white text-2xl absolute top-3 right-5"
+      >
+        ✕
+      </button>
+      <div className="flex flex-col items-center mt-20 space-y-8">
+        {["home", "about", "skills", "projects", "contact"].map((item) => (
+          <Link
+            key={item}
+            href={`#${item}`}
+            className={`text-lg ${
+              activeSection === item ? "text-yellow-300 font-bold" : ""
+            }`}
+            onClick={toggleMenu}
+          >
+            {item.charAt(0).toUpperCase() + item.slice(1)}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ColorfulPortfolio() {
   const [activeSection, setActiveSection] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false);  // State for hamburger menu
@@ -31,37 +63,58 @@ export default function ColorfulPortfolio() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-500 to-teal-400 text-white">
-      <header className="bg-black bg-opacity-50 backdrop-blur-md fixed w-full z-10 top-0">
-        <nav className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
+      <header className="bg-black bg-opacity-50 fixed w-full z-50 top-0">
+        <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
             <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
               Portofolio
             </div>
-            <div className="lg:hidden flex items-center">
-              {/* Hamburger Button */}
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
+            
             {/* Menu Links */}
-            <div className={`lg:flex space-x-4 ${isMenuOpen ? 'block' : 'hidden'} lg:block`}>
+            <div className="hidden lg:flex">
               {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                 <Link 
                   key={item} 
                   href={`#${item}`} 
-                  className={`text-lg hover:text-yellow-300 transition duration-300 ${activeSection === item ? 'text-yellow-300 font-bold' : ''}`}
+                  className={`text-lg px-4 hover:text-yellow-300 transition duration-300 ${activeSection === item ? 'text-yellow-300 font-bold' : ''}`}
                 >
                   {item.charAt(0).toUpperCase() + item.slice(1)}
                 </Link>
               ))}
             </div>
+
+            {/* Hamburger button for mobile */}
+          <div className="lg:hidden">
+            <button onClick={toggleMenu} className="text-white">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+
           </div>
         </nav>
       </header>
+
+      {/* Separate Hamburger Menu for mobile */}
+      <HamburgerMenu
+        isOpen={isMenuOpen}
+        toggleMenu={toggleMenu}
+        activeSection={activeSection}
+      />
 
       <main>
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
