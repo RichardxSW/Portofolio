@@ -71,7 +71,7 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
-        <section id="about" className="py-20 bg-black bg-opacity-50 backdrop-blur-md">
+        <section id="about" className="h-screen flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-md">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Tentang Saya</h2>
             <div className="flex flex-col md:flex-row items-center justify-center">
@@ -91,7 +91,7 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
-        <section id="skills" className="py-20 bg-gradient-to-r from-purple-800 to-indigo-800">
+        <section id="skills" className="h-screen flex justify-center items-center bg-gradient-to-r from-purple-800 to-indigo-800">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Keterampilan Saya</h2>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
@@ -110,7 +110,7 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
-        <section id="projects" className="py-20 bg-gradient-to-r from-blue-800 to-purple-800">
+        <section id="projects" className="h-screen flex justify-center items-center py-20 bg-gradient-to-r from-blue-800 to-purple-800">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Projek Saya</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
