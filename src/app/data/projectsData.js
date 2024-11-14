@@ -1,5 +1,5 @@
 // src/data/projectsData.js
-import { AppleIcon, UtensilsIcon, TicketIcon } from "lucide-react";
+import { AppleIcon, UtensilsIcon, TicketIcon, Wallet2Icon, CarIcon } from "lucide-react";
 
 const projectsData = [
   {
@@ -10,6 +10,17 @@ const projectsData = [
     icon: AppleIcon,
     color: "text-red-500",
     link: "https://github.com/RichardxSW/Zest",
+    image: "/img/zest.png",
+  },
+  {
+    title: "MPL-TICKETING",
+    description: "Sebuah aplikasi web yang dirancang untuk membeli tiket untuk menonton pertandingan MPL secara online. \
+                  Website ini dibuat menggunakan NextJS dan Golang dengan database nya Supabase, \
+                  dan dilengkapi dengan payment gateway MidTrans. (On Progress)",
+    icon: TicketIcon,
+    color: "text-red-600",
+    link: "https://github.com/RichardxSW/MPL-Ticketing",
+    image: "/img/mpl.png",
   },
   {
     title: "FLAVORA",
@@ -19,6 +30,7 @@ const projectsData = [
     icon: UtensilsIcon,
     color: "text-yellow-400",
     link: "https://github.com/RichardxSW/Flavora",
+    image: "/img/zest.png",
   },
   {
     title: "SEABREW",
@@ -27,6 +39,25 @@ const projectsData = [
     icon: TicketIcon,
     color: "text-blue-400",
     link: "https://github.com/RichardxSW/SeaBrew",
+    image: "/img/seabrew.png",
+  },
+  {
+    title: "DOOID",
+    description: "Aplikasi mobile yang dibuat sebagai simulasi E-Money memungkinkan pengguna untuk melakukan transfer, menabung, bayar lewat qr code, dan ada offers menarik.\
+                  Dilengkapi dengan fitur history, dan manage profile. Dibangun dengan Flutter.",
+    icon: Wallet2Icon,
+    color: "text-red-400",
+    link: "https://github.com/RichardxSW/dooid",
+    image: "/img/dooid.png",
+  },
+  {
+    title: "SHOWROOM MOBIL",
+    description: "Aplikasi mobile yang dirancang sebagai showroom mobil memungkinkan pengguna untuk melihat tipe - tipe mobil beserta harganya .\
+                  Dibuat menggunakan HTML, CSS, Javascript dan juga AngularJS.",
+    icon: CarIcon,
+    color: "text-gray-400",
+    link: "https://github.com/RichardxSW/UAS-Front-End",
+    image: "/img/uasfe.png",
   },
 ];
 

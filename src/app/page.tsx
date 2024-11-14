@@ -5,6 +5,7 @@ import {Linkedin, Phone, Instagram, Mail } from "lucide-react"
 import Link from "next/link"
 import skillsData from "./data/skillsData.js"
 import projectsData from "./data/projectsData.js"
+import certificates from "./data/certificationsData.js";
 
 // Tipe props untuk komponen HamburgerMenu
 interface HamburgerMenuProps {
@@ -82,7 +83,7 @@ export default function ColorfulPortfolio() {
             
             {/* Menu Links */}
             <div className="hidden md:flex">
-              {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+              {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((item) => (
                 <Link 
                   key={item} 
                   href={`#${item}`} 
@@ -183,28 +184,97 @@ export default function ColorfulPortfolio() {
           </div>
         </section>
 
+        {/* Projects Section */}
         <section id="projects" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-blue-800 to-purple-800">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Projek Saya</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projectsData.map((project, index) => (
-                <div key={index} className="bg-white bg-opacity-10 p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
-                  <div className="flex justify-center items-center mb-4">
-                    <project.icon className={`w-8 h-8 mr-3 ${project.color}`} />
-                    <h3 className="text-2xl font-semibold">{project.title}</h3>
+          <section className="py-20">
+            <div className="container mx-auto px-6">
+              <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                Projek Saya
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+                {projectsData.map((project, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 flex flex-col"
+                  >
+                    <div className="relative h-96">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        style={{
+                          objectFit: 'cover',
+                          width: '100%',
+                          height: '100%',
+                        }}
+                        className="transition-transform duration-300 hover:scale-110"
+                      />
+                    </div>
+                    <div className="p-6 flex-grow flex flex-col">
+                      <div className="flex justify-center items-center mb-4">
+                        <project.icon className={`w-8 h-8 mr-3 ${project.color}`} />
+                        <h3 className="text-2xl font-semibold">{project.title}</h3>
+                    </div>
+                      <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
+                     <Link href={project.link} passHref
+                        className={`inline-flex items-center justify-center group text-yellow-400 hover:text-yellow-300 transition-colors mt-auto`}>
+                        Jelajahi Proyek
+                        <div className="ml-2 w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
-                  <p className="text-gray-300 mb-6">{project.description}</p>
-                  <a href={project.link} className="text-yellow-400 hover:text-yellow-300 flex items-center justify-center group">
-                    Jelajahi Proyek
-                    <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </section>
         </section>
+
+        {/* Certifications Section */}
+        <section id="certificates" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-violet-800 to-blue-800">
+          <section className="py-20">
+            <div className="container mx-auto px-6">
+              <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                Sertifikat
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {certificates.map((certificate, index) => (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
+              >
+                <div className="relative h-96">
+                  <img 
+                  src={certificate.image} 
+                  alt={certificate.title}
+                  style={{
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: '100%',
+                  }} 
+                  className="object-contain" />
+                </div>
+                <div className="p-10">
+                  <div className="gap-2 mb-4">
+                    <div className="w-6 h-6 text-yellow-400" />
+                    <h3 className="text-lg font-bold text-white">{certificate.title}</h3>
+                  </div>
+                  <div className="text-gray-300 space-y-2">
+                    <p>{certificate.organization}</p>
+                    <p>Diterbitkan: {certificate.date}</p>
+                    <p className="text-sm">Credential ID: {certificate.credential}</p>
+                    <Link href={certificate.link} passHref
+                        className={`inline-flex items-center justify-center group text-yellow-400 hover:text-yellow-300 transition-colors mt-auto`}>
+                        Lihat Sertifikat
+                        <div className="ml-2 w-4 h-4" />
+                      </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+              </div>
+            </div>
+          </section>
+        </section>
+
 
         <section id="contact" className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
