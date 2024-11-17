@@ -16,10 +16,13 @@ const skillsData = [
   { name: "Laravel", icon: ServerIcon, color: "text-red-500" },
   { name: "PHP", icon: BracesIcon, color: "text-indigo-300" },
   { name: "C#", icon: BoxIcon, color: "text-purple-500" },
+  { name: ".NET", icon: ServerIcon, color: "text-purple-500" },
   { name: "Node.js", icon: ServerIcon, color: "text-green-400" },
   { name: "Express.js", icon: ServerIcon, color: "text-yellow-400" },
   { name: "MongoDB", icon: DatabaseIcon, color: "text-green-500" },
   { name: "PostgreSQL", icon: DatabaseIcon, color: "text-blue-500" },
+  { name: "Firebase", icon: DatabaseIcon, color: "text-orange-400" },
+  { name: "Supabase", icon: DatabaseIcon, color: "text-green-400" },
   { name: "RESTful APIs", icon: Globe2Icon, color: "text-indigo-500" },
   { name: "Python", icon: BracesIcon, color: "text-blue-500" },
   { name: "C++", icon: CircuitBoardIcon, color: "text-blue-500" },
@@ -36,6 +39,8 @@ const skillsData = [
   { name: "Flutter", icon: SmartphoneIcon, color: "text-teal-400" },
   { name: "React Native", icon: SmartphoneIcon, color: "text-cyan-400" },
   { name: "Git", icon: GitBranchIcon, color: "text-orange-500" },
+  { name: "Figma", icon: GitBranchIcon, color: "text-blue-500" },
+  { name: "Unity", icon: GitBranchIcon, color: "text-gray-400" },
 ];
 
 export default skillsData;

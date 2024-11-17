@@ -154,7 +154,8 @@ export default function ColorfulPortfolio() {
               </div>
               <div className="md:w-1/2 md:pl-8">
                 <p className="text-lg leading-relaxed">
-                  Saya adalah mahasiswa semester 5 jurusan Teknik Informatika di UNTAR dengan passion di bidang pengembangan Back-End. 
+                  Saya adalah mahasiswa jurusan Teknik Informatika di Universitas Tarumanegara dengan minat yang sangat besar di bidang pemrograman,
+                  khususnya dalam pengembangan backend.
                   Saya adalah orang yang antusias, berorientasi pada detail dan memiliki kemampuan pemecahan masalah yang baik. 
                   Saya bisa bekerja sama dengan baik dalam tim, dengan komitmen untuk terus belajar dan beradaptasi dengan lingkungan. 
                   Saya selalu berusaha memberikan solusi yang kreatif dan fungsional dalam setiap proyek yang saya kerjakan. 
@@ -168,7 +169,7 @@ export default function ColorfulPortfolio() {
         <section id="skills" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-purple-800 to-indigo-800">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Keterampilan Saya</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-3">
               {skillsData.map((skill) => (
                 <div key={skill.name} className="bg-white bg-opacity-10 p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition duration-300 transform hover:scale-105">
                   <div className="flex flex-col items-center">
@@ -217,7 +218,7 @@ export default function ColorfulPortfolio() {
                       <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
                      <Link href={project.link} passHref
                         className={`inline-flex items-center justify-center group text-yellow-400 hover:text-yellow-300 transition-colors mt-auto`}>
-                        Jelajahi Proyek
+                        Ke Github
                         <div className="ml-2 w-4 h-4" />
                       </Link>
                     </div>

@@ -26,16 +26,16 @@ const projectsData = [
     title: "FLAVORA",
     description: "Sebuah website yang dirancang sebagai katalog resep - resep makanan. \
                   Dibangun menggunakan HTML, CSS, JavaScript untuk Front-End nya, NodeJS dan EsxpressJS untuk Back-End nya dan juga database nya menggunakan MongoDB. \
-                  Website ini juga dilengkapi dengan otentikasi menggunakan PassportJS.",
+                  Website ini juga dilengkapi dengan otentikasi menggunakan PassportJS dan Google Login.",
     icon: UtensilsIcon,
     color: "text-yellow-400",
     link: "https://github.com/RichardxSW/Flavora",
-    image: "/img/zest.png",
+    image: "/img/flavora.png",
   },
   {
     title: "SEABREW",
     description: "Aplikasi mobile yang memungkinkan pengguna untuk membeli tiket untuk menonton show di tempat hiburan aquarium dan membeli minuman kopi SB Coffee. \
-                  Dilengkapi dengan bundle dan poin yang bisa ditukarkan dengan merchandise. Dibangun dengan React Native.",
+                  Dilengkapi dengan bundle dan poin yang bisa ditukarkan dengan merchandise. Dibangun dengan React Native dan Firebase.",
     icon: TicketIcon,
     color: "text-blue-400",
     link: "https://github.com/RichardxSW/SeaBrew",
