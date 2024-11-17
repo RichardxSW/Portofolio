@@ -1,26 +1,27 @@
-"use client";
+'use client'
 
 import { useState, useEffect } from 'react'
-import {Linkedin, Phone, Instagram, Mail } from "lucide-react"
+import { Linkedin, Phone, Instagram, Mail } from 'lucide-react'
 import Link from "next/link"
+import Image from "next/image"
+import { motion } from 'framer-motion'
 import skillsData from "./data/skillsData.js"
 import projectsData from "./data/projectsData.js"
-import certificates from "./data/certificationsData.js";
+import certificates from "./data/certificationsData.js"
 
-// Tipe props untuk komponen HamburgerMenu
 interface HamburgerMenuProps {
   isOpen: boolean;
   toggleMenu: () => void;
   activeSection: string;
 }
 
-// HamburgerMenu Component
-function HamburgerMenu({ isOpen, toggleMenu, activeSection }:HamburgerMenuProps) {
+function HamburgerMenu({ isOpen, toggleMenu, activeSection }: HamburgerMenuProps) {
   return (
-    <div
-      className={`fixed top-0 right-0 h-full w-1/3 bg-black bg-opacity-90 text-white z-50 transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: isOpen ? 0 : "100%" }}
+      transition={{ type: "tween", duration: 0.3 }}
+      className="fixed top-0 right-0 h-full w-64 bg-gray-900 text-white z-50"
     >
       <button
         onClick={toggleMenu}
@@ -29,12 +30,12 @@ function HamburgerMenu({ isOpen, toggleMenu, activeSection }:HamburgerMenuProps)
         ✕
       </button>
       <div className="flex flex-col items-center mt-20 space-y-8">
-        {["home", "about", "skills", "projects", "contact"].map((item) => (
+        {["home", "about", "skills", "projects", "certificates", "contact"].map((item) => (
           <Link
             key={item}
             href={`#${item}`}
             className={`text-lg ${
-              activeSection === item ? "text-yellow-300 font-bold" : ""
+              activeSection === item ? "text-blue-400 font-bold" : ""
             }`}
             onClick={toggleMenu}
           >
@@ -42,18 +43,17 @@ function HamburgerMenu({ isOpen, toggleMenu, activeSection }:HamburgerMenuProps)
           </Link>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-export default function ColorfulPortfolio() {
+export default function ProfessionalPortfolio() {
   const [activeSection, setActiveSection] = useState('')
-  const [isMenuOpen, setIsMenuOpen] = useState(false);  // State for hamburger menu
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'contact']
+      const sections = ['home', 'about', 'skills', 'projects', 'certificates', 'contact']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -74,237 +74,271 @@ export default function ColorfulPortfolio() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-500 to-teal-400 text-white">
-      <header className="bg-black bg-opacity-50 fixed w-full z-50 top-0">
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      <header className="bg-white shadow-md fixed w-full z-50 top-0">
         <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
-              Portofolio
-            </div>
-            
-            {/* Menu Links */}
-            <div className="hidden md:flex">
-              {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((item) => (
-                <Link 
-                  key={item} 
-                  href={`#${item}`} 
-                  className={`text-lg px-4 hover:text-yellow-300 transition duration-300 ${activeSection === item ? 'text-yellow-300 font-bold' : ''}`}
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </Link>
-              ))}
-            </div>
-
-            {/* Hamburger button for mobile */}
-          <div className="lg:hidden">
-          {!isMenuOpen && (
-            <button onClick={toggleMenu} className="text-white">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="text-2xl font-bold text-gray-800">
+            Portofolio
+          </div>
+          
+          <div className="hidden md:flex space-x-6">
+            {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((item) => (
+              <Link 
+                key={item} 
+                href={`#${item}`} 
+                className={`text-lg hover:text-blue-600 transition duration-300 ${activeSection === item ? 'text-blue-600 font-bold' : ''}`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          )}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+            ))}
+          </div>
 
+          <div className="md:hidden">
+            {!isMenuOpen && (
+              <button onClick={toggleMenu} className="text-gray-800">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
         </nav>
       </header>
 
-      {/* Separate Hamburger Menu for mobile */}
       <HamburgerMenu
         isOpen={isMenuOpen}
         toggleMenu={toggleMenu}
         activeSection={activeSection}
       />
 
-      <main>
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 animate-gradient-x"></div>
-          </div>
-          <div className="text-center relative z-10">
-            <h1 className="text-6xl font-bold mb-4 animate-fade-in-down">Richard Souwiko</h1>
-            <p className="text-3xl mb-8 animate-fade-in-up">Programming Enthusiast</p>
+      <main className="pt-16">
+        <section id="home" className="min-h-screen flex items-center justify-center bg-gray-50">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl font-bold mb-4 text-gray-800">Richard Souwiko</h1>
+            <p className="text-2xl mb-8 text-gray-600">Programming Enthusiast</p>
             <div className="flex justify-center space-x-4">
-              <a href="https://www.canva.com/design/DAGUdx070OM/X1jfpa26vouGWQuGKAXoug/view" className="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-gray-700 transition duration-300 transform hover:scale-105">
-                Lihat CV
+              <a href="https://www.canva.com/design/DAGUdx070OM/X1jfpa26vouGWQuGKAXoug/view" className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">
+                View CV
               </a>
-              <a href="https://github.com/RichardxSW" className="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition duration-300 transform hover:scale-105">
-                Lihat Github
+              <a href="https://github.com/RichardxSW" className="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-900 transition duration-300">
+                GitHub Profile
               </a>
             </div>
-          </div>
+          </motion.div>
         </section>
 
-        <section id="about" className="min-h-screen flex justify-center items-center py-20 bg-black bg-opacity-50 backdrop-blur-md">
+        <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-white">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Tentang Saya</h2>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-8 text-center text-gray-800"
+            >
+              About Me
+            </motion.h2>
             <div className="flex flex-col md:flex-row items-center justify-center">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <img src="/img/Foto_Profil.jpeg?height=300&width=300" alt="Pict" className="rounded-full mx-auto border-4 border-yellow-400 shadow-lg transform hover:scale-105 transition duration-300" width={300} height={300} />
-              </div>
-              <div className="md:w-1/2 md:pl-8">
-                <p className="text-lg leading-relaxed">
-                  Saya adalah mahasiswa jurusan Teknik Informatika di Universitas Tarumanegara dengan minat yang sangat besar di bidang pemrograman,
-                  khususnya dalam pengembangan backend.
-                  Saya adalah orang yang antusias, berorientasi pada detail dan memiliki kemampuan pemecahan masalah yang baik. 
-                  Saya bisa bekerja sama dengan baik dalam tim, dengan komitmen untuk terus belajar dan beradaptasi dengan lingkungan. 
-                  Saya selalu berusaha memberikan solusi yang kreatif dan fungsional dalam setiap proyek yang saya kerjakan. 
-                  Saya juga bisa mengatur waktu dalam bekerja untuk mencapai hasil yang maksimal.
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="md:w-1/3 mb-8 md:mb-0"
+              >
+                <Image src="/img/Foto_Profil_Blue.png" alt="Profile Picture" width={300} height={300} className="rounded-full mx-auto shadow-lg" />
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="md:w-2/3 md:pl-8"
+              >
+                <p className="text-lg leading-relaxed text-gray-600">
+                Saya adalah mahasiswa jurusan Teknik Informatika di Universitas Tarumanegara dengan minat yang sangat besar di bidang pemrograman, 
+                khususnya dalam pengembangan backend. Saya adalah orang yang antusias, berorientasi pada detail dan memiliki kemampuan pemecahan masalah yang baik. 
+                Saya bisa bekerja sama dengan baik dalam tim, dengan komitmen untuk terus belajar dan beradaptasi dengan lingkungan. 
+                Saya selalu berusaha memberikan solusi yang kreatif dan fungsional dalam setiap proyek yang saya kerjakan. 
+                Saya juga bisa mengatur waktu dalam bekerja untuk mencapai hasil yang maksimal.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        <section id="skills" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-purple-800 to-indigo-800">
+        <section id="skills" className="min-h-screen py-20 bg-gray-50">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Keterampilan Saya</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-3">
-              {skillsData.map((skill) => (
-                <div key={skill.name} className="bg-white bg-opacity-10 p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition duration-300 transform hover:scale-105">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-12 text-center text-gray-800"
+            >
+              Tech Stacks
+            </motion.h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {skillsData.map((skill, index) => (
+                <motion.div 
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition duration-300"
+                >
                   <div className="flex flex-col items-center">
-                <skill.icon className={`w-8 h-8 mb-3 ${skill.color}`} />
-                <h3 className={`text-lg font-medium ${skill.color}`}>
-                  {skill.name}
-                </h3>
-                    {/* <h3 className="text-md font-semibold mt-2">{skill.name}</h3> */}
+                    <skill.icon className={`w-8 h-8 mb-3 ${skill.color}`} />
+                    <h3 className={`text-sm font-medium text-gray-800`}>
+                      {skill.name}
+                    </h3>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-blue-800 to-purple-800">
-          <section className="py-20">
-            <div className="container mx-auto px-6">
-              <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                Projek Saya
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-                {projectsData.map((project, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 flex flex-col"
-                  >
-                    <div className="relative h-96">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        style={{
-                          objectFit: 'cover',
-                          width: '100%',
-                          height: '100%',
-                        }}
-                        className="transition-transform duration-300 hover:scale-110"
-                      />
-                    </div>
-                    <div className="p-6 flex-grow flex flex-col">
-                      <div className="flex justify-center items-center mb-4">
-                        <project.icon className={`w-8 h-8 mr-3 ${project.color}`} />
-                        <h3 className="text-2xl font-semibold">{project.title}</h3>
-                    </div>
-                      <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
-                     <Link href={project.link} passHref
-                        className={`inline-flex items-center justify-center group text-yellow-400 hover:text-yellow-300 transition-colors mt-auto`}>
-                        Ke Github
-                        <div className="ml-2 w-4 h-4" />
-                      </Link>
-                    </div>
+        <section id="projects" className="min-h-screen py-20 bg-white">
+          <div className="container mx-auto px-6">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-12 text-center text-gray-800"
+            >
+              My Projects
+            </motion.h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projectsData.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative h-96">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      layout="fill"
+                      objectFit="contain"
+                      className="transition-transform duration-300 hover:scale-105"
+                    />
                   </div>
-                ))}
-              </div>
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <project.icon className={`w-6 h-6 mr-3 ${project.color}`} />
+                      <h3 className="text-xl font-semibold text-gray-800">{project.title}</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">{project.description}</p>
+                    <Link href={project.link} passHref
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      View on GitHub
+                      <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </section>
-        </section>
-
-        {/* Certifications Section */}
-        <section id="certificates" className="min-h-screen flex justify-center items-center py-20 bg-gradient-to-r from-violet-800 to-blue-800">
-          <section className="py-20">
-            <div className="container mx-auto px-6">
-              <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
-                Sertifikat
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {certificates.map((certificate, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-              >
-                <div className="relative h-96">
-                  <img 
-                  src={certificate.image} 
-                  alt={certificate.title}
-                  style={{
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
-                  }} 
-                  className="object-contain" />
-                </div>
-                <div className="p-10">
-                  <div className="gap-2 mb-4">
-                    <div className="w-6 h-6 text-yellow-400" />
-                    <h3 className="text-lg font-bold text-white">{certificate.title}</h3>
-                  </div>
-                  <div className="text-gray-300 space-y-2">
-                    <p>{certificate.organization}</p>
-                    <p>Diterbitkan: {certificate.date}</p>
-                    <p className="text-sm">Credential ID: {certificate.credential}</p>
-                    <Link href={certificate.link} passHref
-                        className={`inline-flex items-center justify-center group text-yellow-400 hover:text-yellow-300 transition-colors mt-auto`}>
-                        Lihat Sertifikat
-                        <div className="ml-2 w-4 h-4" />
-                      </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-              </div>
-            </div>
-          </section>
-        </section>
-
-
-        <section id="contact" className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 animate-gradient-xy"></div>
           </div>
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Kontak Saya</h2>
+        </section>
 
+        <section id="certificates" className="py-20 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-12 text-center text-gray-800"
+            >
+              Certificates
+            </motion.h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {certificates.map((certificate, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative h-96">
+                    <Image 
+                      src={certificate.image} 
+                      alt={certificate.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">{certificate.title}</h3>
+                    <p className="text-gray-600">{certificate.organization}</p>
+                    <p className="text-gray-500 text-sm mb-4">Issued: {certificate.date}</p>
+                    <p className="text-gray-500 text-sm mb-4">Credential ID: {certificate.credential}</p>
+                    <Link href={certificate.link} passHref
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      View Certificate
+                      <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="py-20 bg-white">
+          <div className="container mx-auto px-6 text-center">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-8 text-gray-800"
+            >
+              Contact Me
+            </motion.h2>
             <div className="flex justify-center space-x-6">
-              <a href="https://wa.me/6285779635119" className="hover:text-yellow-400 transition duration-300 transform hover:scale-110" aria-label="Email">
-                <Phone size={40} />
+              <a href="https://wa.me/6285779635119" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="WhatsApp">
+                <Phone size={32} />
               </a>
-              <a href="https://www.instagram.com/richardxsw/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition duration-300 transform hover:scale-110" aria-label="CV">
-                <Instagram size={40} />
+              <a href="https://www.instagram.com/richardxsw/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="Instagram">
+                <Instagram size={32} />
               </a>
-              <a href="https://linkedin.com/in/richardxsw" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition duration-300 transform hover:scale-110" aria-label="LinkedIn">
-                <Linkedin size={40} />
+              <a href="https://linkedin.com/in/richardxsw" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="LinkedIn">
+                <Linkedin size={32} />
               </a>
-              <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=richard.s050804@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition duration-300 transform hover:scale-110" aria-label="GitHub">
-                <Mail size={40} />
+              <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=richard.s050804@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="Email">
+                <Mail size={32} />
               </a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-black bg-opacity-50 backdrop-blur-md text-white py-6">
+      <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2024 Richard Souwiko. Semua hak cipta dilindungi.</p>
+          <p>&copy; 2024 Richard Souwiko. All rights reserved.</p>
         </div>
       </footer>
     </div>

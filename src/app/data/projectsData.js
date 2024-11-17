@@ -14,7 +14,7 @@ const projectsData = [
   },
   {
     title: "MPL-TICKETING",
-    description: "Sebuah aplikasi web yang dirancang untuk membeli tiket untuk menonton pertandingan MPL secara online. \
+    description: "Sebuah aplikasi web yang dirancang untuk membeli tiket pertandingan tournament MPL secara online dan melihat profil beserta roster tim. \
                   Website ini dibuat menggunakan NextJS dan Golang dengan database nya Supabase, \
                   dan dilengkapi dengan payment gateway MidTrans. (On Progress)",
     icon: TicketIcon,
@@ -25,7 +25,7 @@ const projectsData = [
   {
     title: "FLAVORA",
     description: "Sebuah website yang dirancang sebagai katalog resep - resep makanan. \
-                  Dibangun menggunakan HTML, CSS, JavaScript untuk Front-End nya, NodeJS dan EsxpressJS untuk Back-End nya dan juga database nya menggunakan MongoDB. \
+                  Dibangun menggunakan HTML, CSS, JavaScript untuk Front-End nya, NodeJS dan ExpressJS untuk Back-End nya dan juga database nya menggunakan MongoDB. \
                   Website ini juga dilengkapi dengan otentikasi menggunakan PassportJS dan Google Login.",
     icon: UtensilsIcon,
     color: "text-yellow-400",
