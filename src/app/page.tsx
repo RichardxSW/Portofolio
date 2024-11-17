@@ -74,8 +74,8 @@ export default function ProfessionalPortfolio() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-      <header className="bg-white shadow-md fixed w-full z-50 top-0">
+    <div className="min-h-screen bg-gray-800 text-gray-800">
+      <header className="bg-gray-100 bg-opacity-50 shadow-md fixed w-full z-50 top-0">
         <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">
             Portofolio
@@ -123,33 +123,33 @@ export default function ProfessionalPortfolio() {
       />
 
       <main className="pt-16">
-        <section id="home" className="min-h-screen flex items-center justify-center bg-gray-50">
+        <section id="home" className="min-h-screen flex items-center justify-center bg-gray-800">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold mb-4 text-gray-800">Richard Souwiko</h1>
-            <p className="text-2xl mb-8 text-gray-600">Programming Enthusiast</p>
+            <h1 className="text-5xl font-bold mb-4 text-gray-50">Richard Souwiko</h1>
+            <p className="text-2xl mb-8 text-gray-100">Programming Enthusiast</p>
             <div className="flex justify-center space-x-4">
-              <a href="https://www.canva.com/design/DAGUdx070OM/X1jfpa26vouGWQuGKAXoug/view" className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">
+              <a href="https://www.canva.com/design/DAGUdx070OM/X1jfpa26vouGWQuGKAXoug/view" className="bg-blue-950 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-800 transition duration-300">
                 View CV
               </a>
-              <a href="https://github.com/RichardxSW" className="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-900 transition duration-300">
+              <a href="https://github.com/RichardxSW" className="bg-gray-950 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition duration-300">
                 GitHub Profile
               </a>
             </div>
           </motion.div>
         </section>
 
-        <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-white">
+        <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-gray-600">
           <div className="container mx-auto px-6">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-8 text-center text-gray-800"
+              className="text-3xl font-bold mb-8 text-center text-gray-100"
             >
               About Me
             </motion.h2>
@@ -168,7 +168,7 @@ export default function ProfessionalPortfolio() {
                 transition={{ duration: 0.5 }}
                 className="md:w-2/3 md:pl-8"
               >
-                <p className="text-lg leading-relaxed text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-50">
                 Saya adalah mahasiswa jurusan Teknik Informatika di Universitas Tarumanegara dengan minat yang sangat besar di bidang pemrograman, 
                 khususnya dalam pengembangan backend. Saya adalah orang yang antusias, berorientasi pada detail dan memiliki kemampuan pemecahan masalah yang baik. 
                 Saya bisa bekerja sama dengan baik dalam tim, dengan komitmen untuk terus belajar dan beradaptasi dengan lingkungan. 
@@ -180,13 +180,13 @@ export default function ProfessionalPortfolio() {
           </div>
         </section>
 
-        <section id="skills" className="min-h-screen py-20 bg-gray-50">
+        <section id="skills" className="min-h-screen py-20 bg-gray-750">
           <div className="container mx-auto px-6">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-12 text-center text-gray-800"
+              className="text-3xl font-bold mb-12 text-center text-gray-100"
             >
               Tech Stacks
             </motion.h2>
@@ -211,13 +211,13 @@ export default function ProfessionalPortfolio() {
           </div>
         </section>
 
-        <section id="projects" className="min-h-screen py-20 bg-white">
+        <section id="projects" className="min-h-screen py-20 bg-gray-600">
           <div className="container mx-auto px-6">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-12 text-center text-gray-800"
+              className="text-3xl font-bold mb-12 text-center text-gray-100"
             >
               My Projects
             </motion.h2>
@@ -260,13 +260,13 @@ export default function ProfessionalPortfolio() {
           </div>
         </section>
 
-        <section id="certificates" className="py-20 bg-gray-50">
+        <section id="certificates" className="py-20 bg-gray-800">
           <div className="container mx-auto px-6">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-12 text-center text-gray-800"
+              className="text-3xl font-bold mb-12 text-center text-gray-100"
             >
               Certificates
             </motion.h2>
@@ -308,27 +308,27 @@ export default function ProfessionalPortfolio() {
           </div>
         </section>
 
-        <section id="contact" className="py-20 bg-white">
+        <section id="contact" className="py-20 bg-gray-700">
           <div className="container mx-auto px-6 text-center">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-8 text-gray-800"
+              className="text-3xl font-bold mb-8 text-gray-100"
             >
               Contact Me
             </motion.h2>
             <div className="flex justify-center space-x-6">
-              <a href="https://wa.me/6285779635119" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="WhatsApp">
+              <a href="https://wa.me/6285779635119" className="text-gray-100 hover:text-blue-600 transition duration-300" aria-label="WhatsApp">
                 <Phone size={32} />
               </a>
-              <a href="https://www.instagram.com/richardxsw/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="Instagram">
+              <a href="https://www.instagram.com/richardxsw/" target="_blank" rel="noopener noreferrer" className="text-gray-100 hover:text-blue-600 transition duration-300" aria-label="Instagram">
                 <Instagram size={32} />
               </a>
-              <a href="https://linkedin.com/in/richardxsw" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/richardxsw" target="_blank" rel="noopener noreferrer" className="text-gray-100 hover:text-blue-600 transition duration-300" aria-label="LinkedIn">
                 <Linkedin size={32} />
               </a>
-              <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=richard.s050804@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition duration-300" aria-label="Email">
+              <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=richard.s050804@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-100 hover:text-blue-600 transition duration-300" aria-label="Email">
                 <Mail size={32} />
               </a>
             </div>
@@ -336,7 +336,7 @@ export default function ProfessionalPortfolio() {
         </section>
       </main>
 
-      <footer className="bg-gray-800 text-white py-6">
+      <footer className="bg-gray-950 text-white py-6">
         <div className="container mx-auto px-6 text-center">
           <p>&copy; 2024 Richard Souwiko. All rights reserved.</p>
         </div>
